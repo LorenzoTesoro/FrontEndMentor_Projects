@@ -50,3 +50,46 @@ body {
   padding-left: 0.5rem;
 }
 /* #endregion header */
+
+/* #region main */
+.main {
+  padding: 1rem;
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.filters__search-wrapper {
+  position: relative;
+}
+.filters__search {
+  background-color: var(--drk-el);
+  border: none;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  border-radius: 10px;
+  width: 100%;
+  color: var(--white);
+}
+.filters__search::placeholder {
+  font-weight: var(--fw-sm);
+  color: var(--white);
+  opacity: 0.8;
+  padding-left: 4rem;
+}
+/* icona search input */
+.filters__search-wrapper::before {
+  content: "\f002";
+  font-family: "Font Awesome 5 Free";
+  color: var(--white);
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 2rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.filters__search-wrapper:focus-within::before {
+  opacity: 0;
+}
+/* #endregion main */
