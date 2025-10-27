@@ -22,6 +22,31 @@
 
 body {
   font-family: var(--ff-primary), sans-serif;
+  min-height: 100vh;
+  background-color: var(--drk-bg);
+  color: var(--white);
 }
-
 /* #endregion common rules */
+
+/* #region header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 1rem 2rem 1rem;
+  background-color: var(--drk-el);
+}
+.header__title {
+  font-weight: var(--fw-md);
+}
+.header__theme-toggle {
+  border: none;
+  background-color: var(--drk-el);
+  color: var(--white);
+  font-weight: var(--fw-sm);
+  cursor: pointer;
+}
+.header__theme-toggle span {
+  padding-left: 0.5rem;
+}
+/* #endregion header */
