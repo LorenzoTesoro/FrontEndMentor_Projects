@@ -1,0 +1,27 @@
+/* #region common rules */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --drk-el: hsl(209, 23%, 22%); /* (Dark Mode Elements) */
+  --drk-bg: hsl(207, 26%, 17%);
+  --light-txt: hsl(200, 15%, 8%);
+  --light-input: hsl(0, 0%, 50%);
+  --light-bg: hsl(0, 0%, 99%);
+  --white: hsl(0, 100%, 100%); /* drk text && light elements */
+
+  --fw-sm: 300;
+  --fw-md: 600;
+  --fw-lg: 800;
+
+  --ff-primary: "Nunito Sans";
+}
+
+body {
+  font-family: var(--ff-primary), sans-serif;
+}
+
+/* #endregion common rules */
