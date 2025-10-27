@@ -43,13 +43,29 @@
             placeholder="Search for a country..."
           />
         </div>
-        <select class="filters__region" name="regions" id="regions">
-          <option>Africa</option>
-          <option>America</option>
-          <option>Asia</option>
-          <option>Europe</option>
-          <option>Oceania</option>
-        </select>
+        <div class="filters__region-wrapper">
+          <button class="filters__region" type="button">
+            <div class="filters__region-text">Filter by Region</div>
+            <div class="filters__region-arrow">▼</div>
+          </button>
+          <div class="filters__region-dropdown">
+            <button class="filters__region-option" data-value="africa">
+              Africa
+            </button>
+            <button class="filters__region-option" data-value="americas">
+              America
+            </button>
+            <button class="filters__region-option" data-value="asia">
+              Asia
+            </button>
+            <button class="filters__region-option" data-value="europe">
+              Europe
+            </button>
+            <button class="filters__region-option" data-value="oceania">
+              Oceania
+            </button>
+          </div>
+        </div>
       </div>
       <div class="countries"></div>
     </main>

@@ -89,7 +89,46 @@ body {
   transform: translateY(-50%);
   pointer-events: none;
 }
+/* nascondi icona al focus input */
 .filters__search-wrapper:focus-within::before {
   opacity: 0;
 }
+
+.filters__region-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.filters__region {
+  background-color: var(--drk-el);
+  border: none;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: var(--white);
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+}
+.filters__region-dropdown {
+  background-color: var(--drk-el);
+  border: none;
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: var(--white);
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.8;
+  gap: 1rem;
+  display: none; /* toggle after js handler */
+}
+.filters__region-option {
+  border: none;
+  background-color: var(--drk-el);
+  color: var(--white);
+  text-align: left;
+  font-weight: var(--fw-sm);
+}
+
 /* #endregion main */
