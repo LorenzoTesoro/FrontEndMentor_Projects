@@ -26,10 +26,6 @@ body {
   background-color: var(--drk-bg);
   color: var(--white);
 }
-img {
-  max-width: 100%;
-  height: auto;
-}
 /* #endregion common rules */
 
 /* #region header */
@@ -143,6 +139,17 @@ img {
 .country {
   background-color: var(--drk-el);
   border-radius: 10px;
+}
+.country__flag {
+  width: 100%;
+  height: 200px;
+  border-radius: 10px 10px 0 0;
+}
+.country__flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .country__info {
   padding: 2rem;
