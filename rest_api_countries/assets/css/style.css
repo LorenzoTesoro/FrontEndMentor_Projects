@@ -99,6 +99,7 @@ body {
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
+  cursor: pointer;
 }
 .filters__region {
   background-color: var(--drk-el);
@@ -111,6 +112,7 @@ body {
   justify-content: space-between;
   opacity: 0.8;
   gap: 1rem;
+  cursor: pointer;
 }
 .filters__region-dropdown {
   background-color: var(--drk-el);
@@ -137,6 +139,7 @@ body {
   color: var(--white);
   text-align: left;
   font-weight: var(--fw-sm);
+  cursor: pointer;
 }
 .countries {
   padding: 2rem;

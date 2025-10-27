@@ -5,7 +5,21 @@ const regionButton = document.querySelector(".filters__region");
 let data = [];
 
 searchInput.addEventListener("input", updateIconVisibility);
-searchInput.addEventListener("input", searchCountry);
+searchInput.addEventListener("input", filterCountries);
+regionDropdown.addEventListener("click", function (e) {
+  if (
+    e.target.tagName === "BUTTON" &&
+    e.target.classList.contains("filters__region-option")
+  ) {
+    e.target.classList.toggle("selected");
+    const region = e.target.dataset.value;
+    filterCountries();
+    //chiudo il dropdown e aggiorno la option selected
+    regionDropdown.classList.toggle("filters__region-wrapper--open");
+    document.querySelector(".filters__region-text").textContent =
+      region.charAt(0).toUpperCase() + region.slice(1);
+  }
+});
 //toggle semplice dropdown
 regionButton.addEventListener("click", function (e) {
   e.stopPropagation();
@@ -18,7 +32,7 @@ document.addEventListener("click", function (e) {
   }
 });
 
-getCountries();
+getCountries(); // on dom load
 
 function updateIconVisibility() {
   if (searchInput.value.length > 0) {
@@ -75,12 +89,24 @@ function populateCountries(countries) {
     container.insertAdjacentHTML("beforeend", countryEl);
   });
 }
-function searchCountry() {
-  const text = searchInput.value.toLowerCase().trim();
-  console.log(text);
+
+function filterCountries() {
+  const filter_text = searchInput.value.toLowerCase().trim();
+  const filter_region = regionDropdown
+    .querySelector(".selected")
+    .textContent.trim();
   const filteredCountries = data.filter((country) => {
-    return country.name.common.substring(0, text.length).toLowerCase() === text;
+    let matchText = true;
+    let matchRegion = true;
+
+    if (filter_text != "") {
+      matchText = country.name.common.toLowerCase().startsWith(filter_text);
+    }
+    if (filter_region != "") {
+      matchRegion =
+        country.region.toLowerCase() === filter_region.toLowerCase();
+    }
+    return matchText && matchRegion;
   });
-  console.log(filteredCountries);
   populateCountries(filteredCountries);
 }
