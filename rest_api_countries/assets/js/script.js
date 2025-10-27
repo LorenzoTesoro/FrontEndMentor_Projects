@@ -1,12 +1,11 @@
-/* 
-   - gestire dropdown con javascript nascondi/mostra e seleziona option
-*/
 const searchInput = document.querySelector(".filters__search");
 const searchWrapper = document.querySelector(".filters__search-wrapper");
 const regionDropdown = document.querySelector(".filters__region-dropdown");
 const regionButton = document.querySelector(".filters__region");
+let data = [];
 
 searchInput.addEventListener("input", updateIconVisibility);
+searchInput.addEventListener("input", searchCountry);
 //toggle semplice dropdown
 regionButton.addEventListener("click", function (e) {
   e.stopPropagation();
@@ -28,16 +27,14 @@ function updateIconVisibility() {
     searchWrapper.classList.remove("filters__search-wrapper--has-value");
   }
 }
-
 async function getCountries() {
-  const countries = await fetch(
+  data = await fetch(
     "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region"
   ).then((resp) => {
     return resp.json();
   });
-  populateCountries(countries);
+  populateCountries(data);
 }
-
 function drawCountry(country) {
   const countryEl = `<div class="country">
           <div class="country__flag">
@@ -77,4 +74,13 @@ function populateCountries(countries) {
     const countryEl = drawCountry(country);
     container.insertAdjacentHTML("beforeend", countryEl);
   });
+}
+function searchCountry() {
+  const text = searchInput.value.toLowerCase().trim();
+  console.log(text);
+  const filteredCountries = data.filter((country) => {
+    return country.name.common.substring(0, text.length).toLowerCase() === text;
+  });
+  console.log(filteredCountries);
+  populateCountries(filteredCountries);
 }
