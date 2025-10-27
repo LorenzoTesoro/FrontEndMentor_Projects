@@ -26,6 +26,10 @@ body {
   background-color: var(--drk-bg);
   color: var(--white);
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
 /* #endregion common rules */
 
 /* #region header */
@@ -93,7 +97,6 @@ body {
 .filters__search-wrapper:focus-within::before {
   opacity: 0;
 }
-
 .filters__region-wrapper {
   display: flex;
   flex-direction: column;
@@ -131,7 +134,34 @@ body {
   text-align: left;
   font-weight: var(--fw-sm);
 }
-
+.countries {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.country {
+  background-color: var(--drk-el);
+  border-radius: 10px;
+}
+.country__info {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.country__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.country__detal-label {
+  font-weight: var(--fw-md);
+}
+.country__detail-value {
+  font-weight: var(--fw-sm);
+  opacity: 0.9;
+}
 /* #endregion main */
 
 /* #region responsiveness */
