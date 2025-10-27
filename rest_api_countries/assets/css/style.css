@@ -109,6 +109,7 @@ body {
   display: flex;
   justify-content: space-between;
   opacity: 0.8;
+  gap: 1rem;
 }
 .filters__region-dropdown {
   background-color: var(--drk-el);
@@ -132,3 +133,19 @@ body {
 }
 
 /* #endregion main */
+
+/* #region responsiveness */
+@media screen and (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .filters__search-wrapper {
+    width: 40%;
+  }
+  .filters__region,
+  .filters__region-dropdown {
+    width: 100%;
+  }
+}
+/* #endregion responsiveness */
