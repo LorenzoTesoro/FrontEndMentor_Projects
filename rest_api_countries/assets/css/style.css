@@ -90,7 +90,8 @@ body {
   pointer-events: none;
 }
 /* nascondi icona al focus input */
-.filters__search-wrapper:focus-within::before {
+.filters__search-wrapper:focus-within::before,
+.filters__search-wrapper--has-value::before {
   opacity: 0;
 }
 .filters__region-wrapper {
