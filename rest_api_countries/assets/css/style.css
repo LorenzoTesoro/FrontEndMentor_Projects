@@ -98,6 +98,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
 }
 .filters__region {
   background-color: var(--drk-el);
@@ -118,11 +119,17 @@ body {
   border-radius: 10px;
   color: var(--white);
   width: 70%;
-  display: flex;
   flex-direction: column;
-  opacity: 0.8;
+  opacity: 1;
   gap: 1rem;
-  display: none; /* toggle after js handler */
+  z-index: 100;
+  display: none;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  position: absolute;
+}
+.filters__region-wrapper--open {
+  display: flex;
 }
 .filters__region-option {
   border: none;

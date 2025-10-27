@@ -1,13 +1,25 @@
 /* 
-   - nascondere icona search fintanto che c'è testo nell'input
    - gestire dropdown con javascript nascondi/mostra e seleziona option
 */
 const searchInput = document.querySelector(".filters__search");
 const searchWrapper = document.querySelector(".filters__search-wrapper");
-
-getCountries();
+const regionDropdown = document.querySelector(".filters__region-dropdown");
+const regionButton = document.querySelector(".filters__region");
 
 searchInput.addEventListener("input", updateIconVisibility);
+//toggle semplice dropdown
+regionButton.addEventListener("click", function (e) {
+  e.stopPropagation();
+  regionDropdown.classList.toggle("filters__region-wrapper--open");
+});
+// chiudo se clicco fuori
+document.addEventListener("click", function (e) {
+  if (!regionDropdown.contains(e.target)) {
+    regionDropdown.classList.remove("filters__region-wrapper--open");
+  }
+});
+
+getCountries();
 
 function updateIconVisibility() {
   if (searchInput.value.length > 0) {
