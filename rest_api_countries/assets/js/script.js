@@ -11,7 +11,11 @@ regionDropdown.addEventListener("click", function (e) {
     e.target.tagName === "BUTTON" &&
     e.target.classList.contains("filters__region-option")
   ) {
-    e.target.classList.toggle("selected");
+    const selectedRegion = document.querySelector(
+      ".filters__region-option.selected"
+    );
+    if (selectedRegion) selectedRegion.classList.remove("selected"); // remove previous selection
+    e.target.classList.add("selected");
     const region = e.target.dataset.value;
     filterCountries();
     //chiudo il dropdown e aggiorno la option selected
@@ -92,9 +96,12 @@ function populateCountries(countries) {
 
 function filterCountries() {
   const filter_text = searchInput.value.toLowerCase().trim();
-  const filter_region = regionDropdown
-    .querySelector(".selected")
-    .textContent.trim();
+  const filter_region = regionDropdown.querySelector(".selected")
+    ? regionDropdown
+        .querySelector(".selected")
+        .getAttribute("data-value")
+        .trim()
+    : "";
   const filteredCountries = data.filter((country) => {
     let matchText = true;
     let matchRegion = true;
