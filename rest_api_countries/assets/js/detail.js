@@ -68,9 +68,9 @@ function populateCountryDetail(country) {
 const countryData = JSON.parse(localStorage.getItem("selectedCountry"));
 const container = document.querySelector(".main .countries");
 const backBtn = document.querySelector(".go-back button");
-console.log(countryData);
 if (countryData) {
-  const countryDetail = `<div class="country" data-name="Afghan">
+  const countryDetail = `
+        <div class="country" data-name="Afghan">
           <div class="country__flag">
             <img
               src="${countryData.flags.svg}"
@@ -78,8 +78,11 @@ if (countryData) {
               class="country__flag-img"
             />
           </div>
+          <div class="country__info-wrapper">
           <div class="country__info">
             <h2 class="country__name">${countryData.name.common}</h2>
+          </div>
+          <div class="country__info">
             <div class="country__details">
               <p class="country__detail">
                 <span class="country__detail-label">Native Name:</span>
@@ -144,6 +147,7 @@ if (countryData) {
                     : '<span class="country__no-borders">No border countries</span>'
                 }
             </div>
+          </div>
           </div>
         </div>`;
   container.innerHTML = "";
