@@ -44,9 +44,11 @@ countries.addEventListener("click", function (e) {
     const countryData = data.find((country) => {
       return country.name.common.toLowerCase() === countryName.toLowerCase();
     });
-
+    const borders = data.filter((country) => {
+      return countryData.borders.includes(country.cca3);
+    });
     localStorage.setItem("selectedCountry", JSON.stringify(countryData));
-
+    localStorage.setItem("borders", JSON.stringify(borders));
     window.location.href = "detail.html";
   }
 });
@@ -62,7 +64,7 @@ function updateIconVisibility() {
 }
 async function getCountries() {
   data = await fetch(
-    "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,topLevelDomain,currencies,languages,borders"
+    "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,currencies,languages,borders,cca3"
   ).then((resp) => {
     return resp.json();
   });
