@@ -150,6 +150,7 @@ body {
 .country {
   background-color: var(--drk-el);
   border-radius: 10px;
+  cursor: pointer;
 }
 .country__flag {
   width: 100%;

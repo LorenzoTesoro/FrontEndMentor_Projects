@@ -2,6 +2,7 @@ const searchInput = document.querySelector(".filters__search");
 const searchWrapper = document.querySelector(".filters__search-wrapper");
 const regionDropdown = document.querySelector(".filters__region-dropdown");
 const regionButton = document.querySelector(".filters__region");
+const countries = document.querySelector(".countries");
 let data = [];
 
 searchInput.addEventListener("input", updateIconVisibility);
@@ -35,6 +36,20 @@ document.addEventListener("click", function (e) {
     regionDropdown.classList.remove("filters__region-wrapper--open");
   }
 });
+//redirect on detail page
+countries.addEventListener("click", function (e) {
+  const country = e.target.closest(".country");
+  if (country) {
+    const countryName = country.getAttribute("data-name");
+    const countryData = data.find((country) => {
+      return country.name.common.toLowerCase() === countryName.toLowerCase();
+    });
+
+    localStorage.setItem("selectedCountry", JSON.stringify(countryData));
+
+    window.location.href = "detail.html";
+  }
+});
 
 getCountries(); // on dom load
 
@@ -47,14 +62,14 @@ function updateIconVisibility() {
 }
 async function getCountries() {
   data = await fetch(
-    "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region"
+    "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,topLevelDomain,currencies,languages,"
   ).then((resp) => {
     return resp.json();
   });
   populateCountries(data);
 }
 function drawCountry(country) {
-  const countryEl = `<div class="country">
+  const countryEl = `<div class="country" data-name="${country.name.common}">
           <div class="country__flag">
             <img
               src="${country.flags.svg}"
@@ -93,7 +108,6 @@ function populateCountries(countries) {
     container.insertAdjacentHTML("beforeend", countryEl);
   });
 }
-
 function filterCountries() {
   const filter_text = searchInput.value.toLowerCase().trim();
   const filter_region = regionDropdown.querySelector(".selected")
