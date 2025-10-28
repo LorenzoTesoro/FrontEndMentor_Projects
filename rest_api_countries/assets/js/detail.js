@@ -68,6 +68,7 @@ function populateCountryDetail(country) {
 const countryData = JSON.parse(localStorage.getItem("selectedCountry"));
 const container = document.querySelector(".main .countries");
 const backBtn = document.querySelector(".go-back button");
+console.log(countryData);
 if (countryData) {
   const countryDetail = `<div class="country" data-name="Afghan">
           <div class="country__flag">
@@ -130,6 +131,19 @@ if (countryData) {
           </div>
           <div class="country__info">
             <h3 class="country__borders">Border Countries:</h3>
+            <div class="country__borders-list">
+                ${
+                  countryData.borders
+                    ? countryData.borders
+                        .map(
+                          (border) => `
+          <button class="country__border-btn">${border}</button>
+        `
+                        )
+                        .join("")
+                    : '<span class="country__no-borders">No border countries</span>'
+                }
+            </div>
           </div>
         </div>`;
   container.innerHTML = "";

@@ -62,7 +62,7 @@ function updateIconVisibility() {
 }
 async function getCountries() {
   data = await fetch(
-    "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,topLevelDomain,currencies,languages,"
+    "https://restcountries.com/v3.1/all?fields=name,flags,capital,population,region,subregion,topLevelDomain,currencies,languages,borders"
   ).then((resp) => {
     return resp.json();
   });
