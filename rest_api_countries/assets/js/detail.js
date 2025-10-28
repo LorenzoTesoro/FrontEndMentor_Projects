@@ -66,8 +66,8 @@ function populateCountryDetail(country) {
 }
 
 const countryData = JSON.parse(localStorage.getItem("selectedCountry"));
-const container = document.querySelector(".main");
-
+const container = document.querySelector(".main .countries");
+const backBtn = document.querySelector(".go-back button");
 if (countryData) {
   const countryDetail = `<div class="country" data-name="Afghan">
           <div class="country__flag">
@@ -135,3 +135,7 @@ if (countryData) {
   container.innerHTML = "";
   container.insertAdjacentHTML("beforeend", countryDetail);
 }
+
+backBtn.addEventListener("click", function (e) {
+  window.history.back();
+});

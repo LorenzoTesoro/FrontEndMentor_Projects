@@ -183,6 +183,24 @@ body {
 }
 /* #endregion main */
 
+/* #region details */
+.main.detail .countries,
+.main.detail .go-back {
+  padding: 1rem;
+}
+.main.detail .go-back button {
+  padding: 0.275rem 1.5rem 0.275rem 1.5rem;
+  border-radius: 5px;
+  background-color: var(--drk-el);
+  border: none;
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+/* #endregion details */
+
 /* #region responsiveness */
 @media screen and (min-width: 768px) {
   .filters {
