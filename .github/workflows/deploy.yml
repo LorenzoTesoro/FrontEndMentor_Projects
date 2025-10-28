@@ -1,4 +1,4 @@
-name: Deploy subfolder to GitHub Pages
+name: Deploy all FrontEndMentor projects to GitHub Pages
 
 on:
   push:
@@ -17,13 +17,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: rest_api_countries
+          path: FrontEndMentor_Projects
 
       - name: Deploy to GitHub Pages
         id: deployment
