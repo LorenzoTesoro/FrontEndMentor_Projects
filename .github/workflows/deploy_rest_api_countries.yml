@@ -23,7 +23,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: FrontEndMentor_Projects/rest_api_countries
+          path: rest_api_countries
 
       - name: Deploy to GitHub Pages
         id: deployment
